@@ -36,6 +36,7 @@ namespace API
             });
 
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
@@ -57,6 +58,9 @@ namespace API
 
             //used to route to our working controllers
             app.UseRouting();
+
+            //needs to be placed between app.userouting and app.useauthorization
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             //used to validate authorization
             app.UseAuthorization();
