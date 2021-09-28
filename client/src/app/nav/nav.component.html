@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+  <div class="container">
+    <a class="navbar-brand" style="color: goldenrod" href="#">Union</a>
+
+    <ul style="color: lightslategray" class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="accountService.currentUser$ | async">
+        <a class="nav-link" href="#">Matches</a>
+      </li>
+      <li class="nav-item" *ngIf="accountService.currentUser$ | async">
+        <a class="nav-link" href="#">Lists</a>
+      </li>
+      <li class="nav-item" *ngIf="accountService.currentUser$ | async">
+        <a class="nav-link" href="#">Messages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Help</a>
+      </li>
+    </ul>
+
+    <div class="btn-group" dropdown *ngIf="accountService.currentUser$ | async">
+      <button
+        id="button-animated"
+        dropdownToggle
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+        aria-controls="dropdown-animated"
+        style="
+          background-color: whitesmoke;
+          border-color: grey;
+          color: goldenrod;
+        "
+      >
+        Welcome to Union <span class="caret"></span>
+      </button>
+      <ul
+        id="dropdown-animated"
+        *dropdownMenu
+        class="dropdown-menu"
+        role="menu"
+        aria-labelledby="button-animated"
+        style="background-color: whitesmoke"
+      >
+        <li role="menuitem">
+          <a class="dropdown-item" style="color: grey" href="#">Edit Profile</a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li role="menuitem">
+          <a
+            class="dropdown-item"
+            style="color: grey"
+            (click)="logout()"
+            href="#"
+            >Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <form
+      *ngIf="!(accountService.currentUser$ | async)"
+      #loginform="ngForm"
+      S
+      class="form-inline mt-2 mt-md-0"
+      (ngSubmit)="login()"
+      autocomplete="off"
+    >
+      <input
+        name="username"
+        [(ngModel)]="model.username"
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="Username"
+      />
+      <input
+        name="password"
+        [(ngModel)]="model.password"
+        class="form-control mr-sm-2"
+        type="password"
+        placeholder="Password"
+      />
+      <button class="btn btn-outline-success" type="submit">Login</button>
+    </form>
+  </div>
+</nav>

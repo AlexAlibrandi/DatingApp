@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div *ngIf="!registerMode" style="text-align: center">
+    <h1 style="color: goldenrod">
+      Create memories and find a true connection with Union.
+    </h1>
+    <p style="color: lightslategray" class="lead">
+      See who is waiting for you. Sign-up now!
+    </p>
+    <div class="text-center">
+      <button
+        style="
+          background-color: whitesmoke;
+          color: slategray;
+          border-color: slategray;
+        "
+        (click)="registerToggle()"
+        class="btn btn-primary btn-lg mr-2"
+      >
+        Register
+      </button>
+      <button
+        style="
+          background-color: whitesmoke;
+          color: slategray;
+          border-color: slategray;
+        "
+        class="btn btn-primary btn-lg mr-2"
+      >
+        Learn more
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register
+          (cancelRegister)="cancelRegisterMode($event)"
+        ></app-register>
+      </div>
+    </div>
+  </div>
+</div>
