@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     return this.accountService.currentUser$.pipe(
       map((user) => {
         if (user) return true;
-        this.toaster.error('You shall not pass');
+        this.toaster.error('Please register to acces this content');
         return false;
       })
     );
