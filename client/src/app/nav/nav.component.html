@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
   <div class="container">
-    <a class="navbar-brand" style="color: rgb(177, 160, 14)" routerLink="/">Union</a>
+    <a class="navbar-brand" style="color: rgb(177, 160, 14)" routerLink="/"
+      >Union</a
+    >
 
     <ul class="navbar-nav mr-auto">
       <ng-container *ngIf="accountService.currentUser$ | async">
@@ -34,7 +36,11 @@
       </li>
     </ul>
 
-    <div class="btn-group" dropdown *ngIf="(accountService.currentUser$  | async) as user">
+    <div
+      class="btn-group"
+      dropdown
+      *ngIf="accountService.currentUser$ | async as user"
+    >
       <button
         id="button-animated"
         dropdownToggle
@@ -47,7 +53,7 @@
           color: rgb(160, 116, 6);
         "
       >
-        Welcome to Union {{user.username}}<span class="caret"></span>
+        Welcome to Union {{ user.username }}<span class="caret"></span>
       </button>
       <ul
         id="dropdown-animated"
@@ -58,7 +64,13 @@
         style="background-color: whitesmoke"
       >
         <li role="menuitem">
-          <a class="dropdown-item" style="color: grey" href="#">Edit Profile</a>
+          <a
+            routerLink="/member/edit"
+            class="dropdown-item"
+            style="color: grey"
+            href="#"
+            >Edit Profile</a
+          >
         </li>
         <div class="dropdown-divider"></div>
         <li role="menuitem">
