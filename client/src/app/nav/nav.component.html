@@ -41,6 +41,7 @@
       dropdown
       *ngIf="accountService.currentUser$ | async as user"
     >
+    <img src="{{user.photoUrl}}" alt="{{user.username}}">
       <button
         id="button-animated"
         dropdownToggle
@@ -49,7 +50,7 @@
         aria-controls="dropdown-animated"
         style="
           background-color: whitesmoke;
-          border-color: grey;
+          border-color:whitesmoke;
           color: rgb(160, 116, 6);
         "
       >
