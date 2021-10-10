@@ -1,20 +1,18 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Member } from '../_models/member';
-
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
-
+  
   constructor(private http: HttpClient) {}
-
-  getMembers(): Observable<Member[]> {
+  getMembers() {
     if (this.members.length > 0) return of(this.members);
     return this.http.get<Member[]>(this.baseUrl + 'users').pipe(
       map((members) => {
@@ -23,7 +21,6 @@ export class MembersService {
       })
     );
   }
-
   getMember(username: string) {
     const member = this.members.find((x) => x.username === username);
     if (member !== undefined) return of(member);
@@ -38,6 +35,7 @@ export class MembersService {
       })
     );
   }
+
   setMainPhoto(photoId: number) {
     return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
   }
