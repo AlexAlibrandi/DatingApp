@@ -1,4 +1,8 @@
-<form [formGroup]="registerForm" (ngSubmit)=" registerForm.valid && register()" autocomplete="off">
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="registerForm.valid && register()"
+  autocomplete="off"
+>
   <h2 style="color: goldenrod" class="text-center">Sign up</h2>
   <hr />
 
@@ -14,51 +18,6 @@
         class="ml-3"
       />
       Female
-    </label>
-    <label class="radio-inline">
-      <input
-        type="radio"
-        value="Cisgender"
-        formControlName="gender"
-        class="ml-3"
-      />
-      Cisgender
-    </label>
-    <label class="radio-inline">
-      <input
-        type="radio"
-        value="Transgender"
-        formControlName="gender"
-        class="ml-3"
-      />
-      Transgender
-    </label>
-    <label class="radio-inline">
-      <input
-        type="radio"
-        value="Non-binary"
-        formControlName="gender"
-        class="ml-3"
-      />
-      Non-binary
-    </label>
-    <label class="radio-inline">
-      <input
-        type="radio"
-        value="Gender-neutral"
-        formControlName="gender"
-        class="ml-3"
-      />
-      Gender-neutral
-    </label>
-    <label class="radio-inline">
-      <input
-        type="radio"
-        value="Genderqueer"
-        formControlName="gender"
-        class="ml-3"
-      />
-      Genderqueer
     </label>
   </div>
 
