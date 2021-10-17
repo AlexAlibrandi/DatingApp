@@ -13,7 +13,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/lists" routerLinkActive="active"
-            >Lists</a
+            >Likes</a
           >
         </li>
         <li class="nav-item">
@@ -21,13 +21,18 @@
             >Messages</a
           >
         </li>
-      </ng-container>
+        <li *appHasRole="['Moderator', 'Admin']" class="nav-item">
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active"
+            >Admin</a
+          >
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/errors" routerLinkActive="active"
-          >Errors</a
-        >
-      </li>
+        <li *appHasRole="['Moderator', 'Admin']" class="nav-item">
+          <a class="nav-link" routerLink="/errors" routerLinkActive="active"
+            >Errors</a
+          >
+        </li>
+      </ng-container>
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/help" routerLinkActive="active"
@@ -39,7 +44,7 @@
     <div
       class="btn-group"
       dropdown
-      *ngIf="accountService.currentUser$ | async as user"
+      *ngIf="(accountService.currentUser$ | async) as user"
     >
       <img
         src="{{ user.photoUrl || './assets/user.png' }}"
@@ -57,7 +62,7 @@
           color: rgb(160, 116, 6);
         "
       >
-        Welcome to Union {{ user.knownAs }}<span class="caret"></span>
+        Welcome to Union {{ user.knownAs || user.username | titlecase }}<span class="caret"></span>
       </button>
       <ul
         id="dropdown-animated"
