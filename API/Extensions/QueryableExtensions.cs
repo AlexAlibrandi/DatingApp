@@ -18,7 +18,6 @@ namespace API.Extensions
                     message.DateRead = DateTime.UtcNow;
                 }
             }
- 
             return query;
         }
     }
