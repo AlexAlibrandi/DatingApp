@@ -48,7 +48,7 @@ namespace API
             app.UseRouting();
 
             //needs to be placed between app.userouting and app.useauthorization
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:4200"));
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:4200", "https://newunion.herokuapp.com"));
 
             app.UseAuthentication();
             
