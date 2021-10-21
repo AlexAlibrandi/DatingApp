@@ -55,12 +55,16 @@ namespace API
             //used to validate authorization
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             //used to map endpoints/ looks in controllers and see what endpoints are available in controller httpget is our endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<PresenceHub>("hubs/presence");
                 endpoints.MapHub<MessageHub>("hubs/message");
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }

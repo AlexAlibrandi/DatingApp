@@ -88,7 +88,7 @@ namespace API.Data
 
         }
 
-         public async Task<IEnumerable<MessageDto>> GetMessageThread(string currentUsername,
+        public async Task<IEnumerable<MessageDto>> GetMessageThread(string currentUsername,
             string recipientUsername)
         {
             var messages = await _context.Messages
